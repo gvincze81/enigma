@@ -25,23 +25,24 @@ class CipherFactory {
                 throw new EnigmaException("Wrong option");
             } else if (!isCipherAvailable(args.getCipher())) {
                 throw new EnigmaException("No such cipher");
-            } else if(!fileExists(args.getFile())){
+            } else if(args.getFile() == null || !fileExists(args.getFile())){
                 throw new EnigmaException("File not found");
             } else if(args.getCipher().equals("rail-fence") && args.getKey() == null){
                 throw new EnigmaException("No key given");
             }
 
+            switch (args.getCipher()){
+                case "rot13":
+                    return new Rot13();
+                case "morse":
+                    return new MorseCode();
+                case "rail-fence":
+                    return new RailFence();
+            }
+
         }catch(EnigmaException e){
             System.out.println(e.getMessage());
         }
-
-        switch (args.getCipher()){
-            case "rot13":
-                return new Rot13();
-            case "morse":
-                return new MorseCode();
-            case "rail-fence":
-                return new RailFence();
-        }
+        return null;
     }
 }

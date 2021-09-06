@@ -18,28 +18,28 @@ class ArgsParser {
                 this.setKey(null);
                 break;
             case 1:
-                this.setOption(args[0]);
+                this.setOption(args[0].toLowerCase());
                 this.setCipher(null);
                 this.setFile(null);
                 this.setKey(null);
                 break;
             case 2:
-                this.setOption(args[0]);
-                this.setCipher(args[1]);
+                this.setOption(args[0].toLowerCase());
+                this.setCipher(args[1].toLowerCase());
                 this.setFile(null);
                 this.setKey(null);
                 break;
             case 3:
-                this.setOption(args[0]);
-                this.setCipher(args[1]);
-                this.setFile(args[2]);
+                this.setOption(args[0].toLowerCase());
+                this.setCipher(args[1].toLowerCase());
+                this.setFile(args[2].toLowerCase());
                 this.setKey(null);
                 break;
             default:
-                this.setOption(args[0]);
-                this.setCipher(args[1]);
-                this.setFile(args[2]);
-                this.setKey(args[3]);
+                this.setOption(args[0].toLowerCase());
+                this.setCipher(args[1].toLowerCase());
+                this.setFile(args[2].toLowerCase());
+                this.setKey(args[3].toLowerCase());
 
         }
 

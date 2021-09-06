@@ -20,6 +20,8 @@ class Enigma {
         try {
             Cipher cipher = CipherFactory.getCipherForArgs(argsParser);
             // use cipher
+            System.out.println(cipher);
+
         } catch(EnigmaException e){
             System.out.println("Exception has occurred");
         }

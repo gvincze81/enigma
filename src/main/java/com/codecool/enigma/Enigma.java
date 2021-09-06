@@ -2,7 +2,7 @@ package com.codecool.enigma;
 
 class Enigma {
 
-    private static String MENU = "Enigma Manual\n" +
+    private final static String MENU = "Enigma Manual\n" +
             "Run options: [-h | -e | -d] {CipherName} {FileName} {EncryptionKey}\n" +
             "   -h : displays this menu; other arguments are ignored.\n" +
             "   -e : encrypt and display\n" +
@@ -17,8 +17,16 @@ class Enigma {
     }
 
     private static void handleCipherOperation(ArgsParser argsParser) {
-        Cipher cipher = CipherFactory.getCipherForArgs(argsParser);
-        // use cipher
+        try {
+            Cipher cipher = CipherFactory.getCipherForArgs(argsParser);
+            // use cipher
+        } catch(EnigmaException e){
+            System.out.println("Exception has occurred");
+        }
+    }
+
+    public static String getMENU(){
+        return MENU;
     }
 
 }

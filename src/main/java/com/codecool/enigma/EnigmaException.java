@@ -1,6 +1,6 @@
 package com.codecool.enigma;
 
-class EnigmaException extends Exception {
+public class EnigmaException extends Exception {
 
     public EnigmaException(String message) {
         super(message);
@@ -9,4 +9,5 @@ class EnigmaException extends Exception {
     public EnigmaException(String message, Throwable cause) {
         super(message, cause);
     }
+
 }

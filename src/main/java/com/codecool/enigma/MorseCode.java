@@ -68,6 +68,22 @@ class MorseCode implements Cipher {
 
     @Override
     public String decrypt(String message) {
-        return null;
+        String[] symbols = message.split(" +");
+        Map<Character, String> englishToMorse = toMorse();
+        Map<String, Character> morseToEnglish = new HashMap<>();
+
+        for(Map.Entry<Character, String> entry : englishToMorse.entrySet()){
+            morseToEnglish.put(entry.getValue(), entry.getKey());
+        }
+
+        String decoded = "";
+        for(String sign: symbols){
+            if(!sign.equals("/")){
+                decoded = decoded.concat(String.valueOf(morseToEnglish.get(sign)));
+            }else {
+                decoded = decoded.concat(" ");
+            }
+        }
+        return decoded;
     }
 }

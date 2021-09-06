@@ -35,5 +35,13 @@ class CipherFactory {
             System.out.println(e.getMessage());
         }
 
+        switch (args.getCipher()){
+            case "rot13":
+                return new Rot13();
+            case "morse":
+                return new MorseCode();
+            case "rail-fence":
+                return new RailFence();
+        }
     }
 }

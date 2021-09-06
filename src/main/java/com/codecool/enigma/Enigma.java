@@ -1,5 +1,9 @@
 package com.codecool.enigma;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 class Enigma {
 
     private final static String MENU = "Enigma Manual\n" +
@@ -20,7 +24,11 @@ class Enigma {
         try {
             Cipher cipher = CipherFactory.getCipherForArgs(argsParser);
             // use cipher
-            System.out.println(cipher);
+
+            if(cipher == null)
+                throw new EnigmaException("error");
+            String encodedMessage = cipher.encrypt(readFile(argsParser.getFile()));
+            System.out.println(encodedMessage);
 
         } catch(EnigmaException e){
             System.out.println("Exception has occurred");
@@ -29,6 +37,24 @@ class Enigma {
 
     public static String getMENU(){
         return MENU;
+    }
+
+    public static String readFile(String filePath){
+        String data = "";
+        try {
+            File source = new File(filePath);
+            Scanner reader = new Scanner(source);
+
+            while(reader.hasNextLine()){
+                data = reader.nextLine();
+            }
+            return data;
+
+        }catch(IOException ioe) {
+            System.out.println(ioe.getMessage());
+            ioe.printStackTrace();
+        }
+        return "";
     }
 
 }

@@ -4,7 +4,16 @@ class Rot13 implements Cipher {
 
     @Override
     public String encrypt(String message) {
-        return null;
+        char[] letters = message.toCharArray();
+        char[] encryptedLetters = new char[letters.length];
+
+        int index = 0;
+        for(char ch: letters){
+            encryptedLetters[index] = encryptLetter(ch);
+            index++;
+        }
+
+        return new String(encryptedLetters);
     }
 
     @Override
@@ -13,7 +22,11 @@ class Rot13 implements Cipher {
     }
 
     private char encryptLetter(char letter) {
-        return letter;
+        String alphabet = Enigma.readFile("/home/tb_fan/projects/enigma/abc.txt");
+        int index = alphabet.indexOf(letter);
+        int newIndex = (index + 13) % 52;
+        char[] characters = alphabet.toCharArray();
+        return characters[newIndex];
     }
 
     private char decryptLetter(char letter) {

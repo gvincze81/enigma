@@ -23,11 +23,12 @@ class Enigma {
     private static void handleCipherOperation(ArgsParser argsParser) {
         try {
             Cipher cipher = CipherFactory.getCipherForArgs(argsParser);
+            int key = Integer.parseInt(argsParser.getKey());
             // use cipher
 
             if(cipher == null)
                 throw new EnigmaException("error");
-            String encodedMessage = cipher.decrypt(readFile(argsParser.getFile()));
+            String encodedMessage = cipher.encrypt(readFile(argsParser.getFile()), key);
             System.out.println(encodedMessage);
 
         } catch(EnigmaException e){

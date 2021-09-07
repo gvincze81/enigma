@@ -76,4 +76,8 @@ class ArgsParser {
     String getKey(){
         return key;
     }
+
+    ArgsParser(){
+
+    }
 }

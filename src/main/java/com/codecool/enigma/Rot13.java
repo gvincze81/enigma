@@ -3,7 +3,7 @@ package com.codecool.enigma;
 class Rot13 implements Cipher {
 
     @Override
-    public String encrypt(String message) {
+    public String encrypt(String message, int key) {
         char[] letters = message.toCharArray();
         char[] encryptedLetters = new char[letters.length];
 

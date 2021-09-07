@@ -48,7 +48,7 @@ class MorseCode implements Cipher {
     }
 
     @Override
-    public String encrypt(String message) {
+    public String encrypt(String message, int key) {
         message = message.toLowerCase();
         Map<Character, String> englishToMorse = toMorse();
         message = message.replaceAll(" +", "/");

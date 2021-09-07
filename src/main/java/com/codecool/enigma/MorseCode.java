@@ -67,7 +67,7 @@ class MorseCode implements Cipher {
     }
 
     @Override
-    public String decrypt(String message) {
+    public String decrypt(String message, int key) {
         String[] symbols = message.split(" +");
         Map<Character, String> englishToMorse = toMorse();
         Map<String, Character> morseToEnglish = new HashMap<>();

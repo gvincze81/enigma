@@ -36,7 +36,27 @@ class RailFence implements Cipher {
     }
 
     @Override
-    public String decrypt(String message) {
-        return null;
+    public String decrypt(String message, int key) {
+        char[] letters = message.toCharArray();
+
+        char[] decoded= new char[message.length()];
+
+        int row = 0;
+        int col = 0;
+        int index = 0;
+        for(int i = 0; i < key; i++){
+            for(int j = i; j < decoded.length; j += (key - 1) * 2){
+                decoded[j] = letters[index];
+                index++;
+                if(i > 0 && i < key - 1 && j + (key - 1 - i) * 2 < letters.length){
+                    decoded[j + (key - 1 - i) * 2] = letters[index];
+                    index++;
+                }
+                if(index >= letters.length)
+                    break;
+            }
+        }
+
+        return new String(decoded);
     }
 }

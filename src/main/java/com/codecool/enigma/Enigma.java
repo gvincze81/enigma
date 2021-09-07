@@ -28,7 +28,7 @@ class Enigma {
 
             if(cipher == null)
                 throw new EnigmaException("error");
-            String encodedMessage = cipher.encrypt(readFile(argsParser.getFile()), key);
+            String encodedMessage = cipher.decrypt(readFile(argsParser.getFile()), key);
             System.out.println(encodedMessage);
 
         } catch(EnigmaException e){

@@ -21,7 +21,7 @@ class Rot13 implements Cipher {
     }
 
     @Override
-    public String decrypt(String message) {
+    public String decrypt(String message, int key) {
         char[] letters = message.toCharArray();
         char[] decryptedLetters = new char[letters.length];
 
